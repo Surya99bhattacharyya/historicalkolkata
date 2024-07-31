@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <style>
+        .container {
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #00000000;
+            color: rgb(192, 107, 22);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            color: #007bff;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #f5d5c3;
+            color: black;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .modal-footer {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .modal-footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .modal-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        
+        .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333333a3; /* Change to your desired dropdown color */
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    color: #f1f1f1;
+}
+
+.dropdown-content li {
+    width: 100%;
+}
+
+.dropdown-content li a {
+    padding: 10px 20px;
+}
+
+.dropdown-content li a:hover {
+    background-color: #555; /* Change to your desired dropdown hover color */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+        .dropdown-content a {
+            color: rgb(255, 255, 255);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .user-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li class="dropdown">
+                    <a href="#section">What We Offer</a>
+                    <ul class="dropdown-content">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="gallery.html">Image Gallery</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="blog/blog.php">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Get in Touch</a></li>
+                   
+            </ul>
+        </nav>
+        
+               
+    
+    </header>
+   
+
+    
+
+    <!-- Main Content -->
+    <main>
+        <!-- Banner Section -->
+        <section class="banner">
+            <div class="banner-content">
+                <h1>Welcome to Timeless Kolkata</h1>
+                <p>Preserving the rich heritage and stories of our community.</p><br>
+                <a href="about.html" class="know-more">Know More</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+<section class="services" id="service">
+    <div class="service-cont">
+    <h2>What We Offer</h2>
+    <hr>
+    <br>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-content">
+                <img src="images/his.png" alt="Service 1" class="card-logo">
+                <div class="text-content">
+                    <h3>HISTORY</h3>
+                    <p>Unveiling Kolkata's Legacy: A Journey Through Time</p>
+                    <a href="history.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="images/cal.png" alt="Service 2" class="card-logo">
+                <div class="text-content">
+                    <h3>CULTURE</h3>
+                    <p>Embracing the Spirit: Kolkata's Cultural Tapestry</p>
+                    <a href="culture.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="images/eve.png" alt="Service 3" class="card-logo">
+                <div class="text-content">
+                    <h3>EVENTS</h3>
+                    <p>Bringing People Together: Celebrating Our Journey</p>
+                    <a href="events.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="images/arch.png" alt="Service 4" class="card-logo">
+                <div class="text-content">
+                    <h3>ARCHIVE</h3>
+                    <p>Preserving the Past: Treasures of Kolkata's Heritage</p>
+                    <a href="archive.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="images/gal.png" alt="Service 5" class="card-logo">
+                <div class="text-content">
+                    <h3>IMAGE GALLERY</h3>
+                    <p>Captured Moments: A Visual Journey Through Kolkata</p>
+                    <a href="gallery.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <img src="images/quiz.png" alt="Service 6" class="card-logo">
+                <div class="text-content">
+                    <h3>QUIZ</h3>
+                    <p>Test Your Knowledge: Discover Kolkata's Rich Heritage</p>
+                    <a href="quiz.html" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="card">
+            <div class="card-content">
+                <img src="images/blog.png" alt="Service 6" class="card-logo">
+                <div class="text-content">
+                    <h3>BLOGS</h3>
+                    <p>Unveiling Kolkata: Journey Through the City</p>
+                    <a href="blog/blog.php" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+        <!-- Heritage Section -->
+<!-- Heritage Section -->
+<section class="heritage">
+    <h2>Our Heritage</h2>
+    
+    <div class="heritage-card">
+        <div class="heritage-text">
+            <hr>
+            <p>
+                Kolkata, formerly known as Calcutta, is the capital of the Indian state of West Bengal. 
+                It is known for its rich cultural heritage, historical landmarks, and as the birthplace of many 
+                great artists, writers, and social reformers. The city has a unique blend of colonial history, 
+                art, and literature, making it a vibrant hub of cultural activities.
+            </p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <hr>
+            <br>
+            <a href="history.html" class="know-more">Know More</a>
+        </div>
+        <div class="heritage-slideshow">
+            <br>
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="images/image.jpg" alt="Heritage Image 1">
+                </div>
+                <div class="mySlides fade">
+                    <img src="images/image2.jpg" alt="Heritage Image 2">
+                </div>
+                <div class="mySlides fade">
+                    <img src="images/image1.jpg" alt="Heritage Image 3">
+                </div>
+                <!-- Add more slides as needed -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+         
+
+        <!-- Media Coverage Section -->
+        <section class="media">
+            <h2>Media Coverage</h2>
+            <hr>
+            <div class="media-logos">
+                <img src="images/ap copy.png" alt="Media 1">
+                <img src="images/bt.jpeg" alt="Media 2">
+                <img src="images/abp.png" alt="Media 3">
+                <img src="images/bbc.png" alt="Media 4">
+                <img src="images/toi.png" alt="Media 5">
+                <img src="images/tn.png" alt="Media 5">
+            </div>
+            <hr>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-widget">
+            <h3>Pages</h3>
+            <ul class="page-list">
+                <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="blog/blog.php">Blog</a></li>
+                    <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </div>
+        <div class="footer-widget">
+            <h3>Contact Info</h3>
+            <p>123 Street Name,<br>City, Country</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123456789</p>
+        </div>
+        <div class="footer-widget">
+            <h3>Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14738.841782131081!2d88.3532697!3d22.552517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027705513adbb5%3A0x93aa9b8c01f6db31!2sPark%20Mansion!5e0!3m2!1sen!2sin!4v1722090760143!5m2!1sen!2sin" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </div>
+</footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+<!-- Scroll to Top Button -->
+<!-- Scroll to Top Button -->
+<button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">
+    &#8679;
+</button>
+<script>
+    // Get the button
+    let mybutton = document.getElementById("scrollToTopBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <script>
+        document.getElementById('login-btn').addEventListener('click', function() {
+            var loginForm = document.getElementById('login-form');
+            loginForm.style.display = loginForm.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('register-link').addEventListener('click', function() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('registration-form').style.display = 'block';
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Send login data to the server
+            fetch('login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ username: username, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('login-btn').style.display = 'none';
+                    document.getElementById('login-form').style.display = 'none';
+                    document.getElementById('user-icon').style.display = 'inline';
+                } else {
+                    alert('Login failed: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var username = document.getElementById('reg-username').value;
+            var password = document.getElementById('reg-password').value;
+
+            // Send registration data to the server
+            fetch('register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ username: username, password: password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Registration successful! You can now login.');
+                    document.getElementById('registration-form').style.display = 'none';
+                } else {
+                    alert('Registration failed: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</html>

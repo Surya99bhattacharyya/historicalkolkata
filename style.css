@@ -1,0 +1,412 @@
+/* General Styles */
+body {
+   
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-family: 'Montserrat';
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #232628;
+    color: white;
+    
+}
+
+header .logo img {
+    height: 50px; /* Adjust logo size */
+}
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white; /* Change to your desired text color */
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Change to your desired hover color */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333333a3; /* Change to your desired dropdown color */
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content li {
+    width: 100%;
+}
+
+.dropdown-content li a {
+    padding: 10px 20px;
+}
+
+.dropdown-content li a:hover {
+    background-color: #555; /* Change to your desired dropdown hover color */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.modal-content {
+    max-width: 500px;
+    margin: auto;
+}
+
+/* Banner Section */
+.banner {
+    background: url('images/banner.jpg') no-repeat center center;
+    background-size: cover;
+    height: 500px;
+    position: relative;
+}
+
+
+.banner-content {
+    padding-left: 790px;
+    padding-bottom: 100px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+}
+
+.banner-content h1 {
+    font-size: 28pt;
+    font-weight: 400;
+    color: #d0cfcf;
+}
+
+.banner-content p {
+    font-size: 1.2em;
+    font-weight: 200;
+}
+
+.know-more {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 15px;
+    border: 1px solid white; /* Add white border */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.know-more:hover {
+    background-color: rgb(170, 170, 170); /* Change background color on hover */
+    color: black; /* Change text color on hover */
+    border: 2px solid rgb(0, 0, 0);
+}
+
+
+/* Services Section */
+.services {
+    background: url('images/servicebg.jpg') no-repeat  center;    
+}
+
+.service-cont{
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 50px 20px;
+    text-align: center;
+
+}
+
+.services h2 {
+    margin-bottom: 30px;
+    font-size: 28pt;
+    font-weight: 500;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between cards */
+}
+
+.card {
+    background: #ececec84;
+    border: 1px solid #d0cfcf;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s; /* Add box-shadow to transition */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.card-content {
+    display: flex; /* Use flexbox to align logo and text */
+    align-items: center; /* Center items vertically */
+    padding: 20px; /* Padding around the card content */
+}
+
+.card-logo {
+    width: 80px; /* Smaller logo size */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between logo and text */
+}
+
+.text-content {
+    text-align: left; /* Align text to the left */
+}
+
+.learn-more {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #2e74dda9;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.learn-more:hover {
+    background-color: #2b1484c2;
+}
+
+.heritage {
+    padding: 50px 20px;
+    text-align: center; /* Center the heading */
+    color: #dee2e6;
+
+    
+}
+
+.heritage h2 {
+   
+    color: #000000;
+    margin-bottom: 30px;
+    font-size: 28pt;
+    font-weight: 500;
+    
+
+}
+
+.heritage-card {
+    display: flex; /* Use flexbox to align text and slideshow */
+    justify-content: space-between; /* Space between text and slideshow */
+    background-color: #111111; /* Background color for the card */
+    border: 1px solid #dee2e6; /* Card border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5)
+
+    
+    
+}
+
+.heritage-text {
+    flex: 1; /* Allow text to take 1 part of the space */
+    margin-right: 20px; /* Space between text and slideshow */
+    padding: 30px;
+    text-align: left;
+    
+
+}
+
+.heritage-slideshow {
+    flex: 1; /* Allow slideshow to take 1 part of the space */
+    position: relative; /* Positioning for slideshow navigation */
+    width: 100%; /* Ensure it takes the full width */
+    max-width: 400px; /* Set a maximum width for the slideshow */
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+}
+
+.mySlides {
+    display: none; /* Hide all slides by default */
+    opacity: 0; /* Start with an opacity of 0 */
+    transition: opacity 1s ease; /* Smooth transition for opacity */
+    width: 100%; /* Make images responsive to the container */
+    height: 300px; /* Set a fixed height for the images */
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
+}
+
+.mySlides.show {
+    display: block; /* Show the current slide */
+    opacity: 1; /* Set opacity to 1 for the visible slide */
+}
+
+
+.mySlides img {
+    width: 100%; /* Make images responsive to the container */
+    height: 300px; /* Set a fixed height for the images */
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
+    border-radius: 5px;
+}
+
+
+.slideshow-container {
+    position: relative; /* Position for the slideshow */
+    max-width: 100%; /* Limit width of the slideshow */
+    overflow: hidden; /* Hide overflow */
+}
+
+
+
+.mySlides img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.know-more {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid white; /* Add white border */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.know-more:hover {
+    background-color: white; /* Change background color on hover */
+    color: black; /* Change text color on hover */
+}
+
+/* Slideshow Navigation */
+.prev, .next {
+    cursor: pointer; /* Change cursor to pointer */
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none; /* Prevent selection */
+}
+
+.prev {
+    left: 0; /* Align left */
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0; /* Align right */
+    border-radius: 3px;
+}
+
+
+
+/* Media Coverage Section */
+.media {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.media h2 {
+    margin-bottom: 30px;
+    font-size: 28pt;
+    font-weight: 500;
+}
+
+.media-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.media-logos img {
+    padding: 30px;
+    width: 200px;
+    height:75px;
+    margin: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.3;
+}
+
+.media-logos img:hover {
+    transform: scale(1.1); /* Slightly increase size on hover */
+    opacity: 0.8;
+}
+
+/* Footer Section */
+footer {
+    background-color: #282828; /* Footer background color */
+    color: rgb(202, 202, 202); /* Text color */
+    padding: 20px 0; /* Padding for footer */
+    font-size: 13pt;
+    font-weight: 100;
+}
+
+footer h3{
+    font-weight: 400;
+}
+
+
+.footer-container {
+    display: flex;
+    justify-content: space-around; /* Space out widgets evenly */
+    max-width: 1200px; /* Max width for the footer */
+    margin: 0 auto; /* Center the footer */
+    
+}
+
+.footer-widget {
+    flex: 1; /* Allow widgets to take equal space */
+    padding: 10px; /* Padding for each widget */
+}
+
+.page-list {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.page-list li {
+    margin: 5px 0; /* Space between list items */
+}
+
+.page-list a {
+    color: rgb(206, 202, 202); /* Link color */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.page-list a:hover {
+    color: #ffce3a;
+}
+
+#scrollToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Place the button 20px from the bottom */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap other elements */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #676767; /* Set background color */
+    color: white; /* Set text color */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    padding: 15px; /* Add some padding */
+    border-radius: 50%; /* Make the button round */
+    font-size: 18px; /* Increase font size for the arrow */
+}
+
+#scrollToTopBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+

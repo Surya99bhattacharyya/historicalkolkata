@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <style>
+        body {
+    font-family: 'Montserrat';
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('images/qbg.jpg') no-repeat center center;
+    
+
+}
+
+.contain{
+    height: 550px;
+}
+
+
+
+#main-page, #quiz-page {
+    transform: translateY(50px);
+    animation: fadeInUp 2s forwards;
+    background: rgba(255, 254, 254, 0.403);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 600px;
+    margin: auto;
+    margin-top: 40px;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Montserrat';
+    color: white;
+}
+
+label {
+
+    display: block;
+    margin: 10px 0 5px;
+    color: #fff;
+    font-family: 'Montserrat';
+    
+
+}
+
+.question{
+    color: #fff;
+    font-family: 'Montserrat';
+}
+
+.option{
+    font-family: 'Montserrat';
+}
+
+
+input, select, button {
+    
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Montserrat';
+    
+}
+
+select, button{
+    width: 598px;
+
+}
+
+button{
+    margin-top: 30px;
+
+}
+
+button {
+    background-color: #ebbd5a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100px;
+}
+
+button:hover {
+    background-color: #fc3d3d;
+}
+
+#navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    margin: 0 0 10px;
+}
+
+.question label {
+    display: flex;
+    
+    margin: 5px 0;
+}
+
+.question input[type="radio"] {
+    margin-right: 10px;
+}
+
+#quiz-form button {
+    display: block;
+    margin: 0 auto;
+}
+
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li class="dropdown">
+                    <a href="#section">What We Offer</a>
+                    <ul class="dropdown-content">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="gallery.html">Image Gallery</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="blog/blog.php">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <!-- Main Content -->
+    <div class="contain">
+    <div id="main-page">
+        
+        <h1 style="font-weight: 500;">Test your Knowledge about Kolkata</h1>
+        <form id="user-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required style="width: 575px;">
+            <label for="age">Age:</label>
+            <input type="number" id="age" required style="width: 575px;">
+            <label for="subject">Select Subject:</label>
+            <select id="subject" required>
+                <option value="" disabled selected>Select your subject</option>
+                <option value="history">History</option>
+                <option value="location">Location</option>
+                <option value="culture">Culture</option>
+            </select>
+            <button type="submit">Proceed</button>
+        </form>
+    </div>
+
+    <div id="quiz-page" class="hidden">
+        <h1 id="quiz-title"></h1>
+        <form id="quiz-form">
+            <div id="question-container">
+                <!-- Question will be dynamically added here -->
+            </div>
+            <div id="navigation-buttons">
+                <button type="button" id="prev-button" onclick="prevQuestion()">Previous</button>
+                <button type="button" id="next-button" onclick="nextQuestion()">Next</button>
+                <button type="submit" id="submit-button" class="hidden">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-widget">
+            <h3>Pages</h3>
+            <ul class="page-list">
+                <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="blog/blog.php">Blog</a></li>
+                    <li><a href="contact.html">Get in Touch</a></li>
+                    
+            </ul>
+        </div>
+        <div class="footer-widget">
+            <h3>Contact Info</h3>
+            <p>123 Street Name,<br>City, Country</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123456789</p>
+        </div>
+        <div class="footer-widget">
+            <h3>Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14738.841782131081!2d88.3532697!3d22.552517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027705513adbb5%3A0x93aa9b8c01f6db31!2sPark%20Mansion!5e0!3m2!1sen!2sin!4v1722090760143!5m2!1sen!2sin" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </div>
+</footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+<!-- Scroll to Top Button -->
+<!-- Scroll to Top Button -->
+<button1 onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">
+    &#8679;
+</button1>
+<script>
+    // Get the button
+    let mybutton = document.getElementById("scrollToTopBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <script>
+        document.getElementById('user-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const age = document.getElementById('age').value;
+    const subject = document.getElementById('subject').value;
+
+    document.getElementById('quiz-title').innerText = `Quiz on ${subject.charAt(0).toUpperCase() + subject.slice(1)}`;
+    loadQuiz(subject);
+
+    document.getElementById('main-page').classList.add('hidden');
+    document.getElementById('quiz-page').classList.remove('hidden');
+});
+
+let currentQuestionIndex = 0;
+let questions = [];
+let userAnswers = []; // To store user answers
+
+function loadQuiz(subject) {
+    questions = getQuestions(subject);
+    currentQuestionIndex = 0;
+    userAnswers = new Array(questions.length).fill(null); // Initialize user answers
+    showQuestion(currentQuestionIndex);
+}
+
+function showQuestion(index) {
+    const questionContainer = document.getElementById('question-container');
+    questionContainer.innerHTML = ''; // Clear previous question
+
+    const question = questions[index];
+    const div = document.createElement('div');
+    div.className = 'question';
+
+    const questionTitle = document.createElement('p');
+    questionTitle.innerText = `${index + 1}. ${question.question}`;
+    div.appendChild(questionTitle);
+
+    question.options.forEach((option, i) => {
+        const label = document.createElement('label');
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = `question${index}`;
+        radio.value = option;
+        radio.checked = userAnswers[index] === option; // Restore user's answer if previously selected
+        radio.addEventListener('change', () => userAnswers[index] = option); // Save user's answer
+        label.appendChild(radio);
+        label.appendChild(document.createTextNode(option));
+        div.appendChild(label);
+    });
+
+    questionContainer.appendChild(div);
+    updateNavigationButtons();
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) {
+        currentQuestionIndex++;
+        showQuestion(currentQuestionIndex);
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        showQuestion(currentQuestionIndex);
+    }
+}
+
+function updateNavigationButtons() {
+    document.getElementById('prev-button').style.display = currentQuestionIndex > 0 ? 'inline-block' : 'none';
+    document.getElementById('next-button').style.display = currentQuestionIndex < questions.length - 1 ? 'inline-block' : 'none';
+    document.getElementById('submit-button').style.display = currentQuestionIndex === questions.length - 1 ? 'inline-block' : 'none';
+}
+
+document.getElementById('quiz-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let score = 0;
+
+    questions.forEach((question, index) => {
+        if (userAnswers[index] === question.answer) {
+            score++;
+        }
+    });
+
+    Swal.fire({
+        title: 'Quiz Completed!',
+        text: `You scored ${score} out of ${questions.length}.`,
+        icon: 'success',
+        confirmButtonText: 'OK'
+    }).then(() => {
+        document.getElementById('main-page').classList.remove('hidden');
+        document.getElementById('quiz-page').classList.add('hidden');
+    });
+});
+
+function getQuestions(subject) {
+    const questions = {
+        history: [
+        { "question": "Who is considered the founder of Kolkata?", "options": ["Robert Clive", "Job Charnock", "Rabindranath Tagore", "Subhas Chandra Bose"], "answer": "Job Charnock" },
+    { "question": "In which year did the Battle of Plassey take place?", "options": ["1757", "1764", "1776", "1780"], "answer": "1757" },
+    { "question": "What significant event occurred in Kolkata in 1946?", "options": ["Partition of Bengal", "Great Calcutta Killings", "Establishment of AIR", "Inauguration of the Indian Museum"], "answer": "Great Calcutta Killings" },
+    { "question": "Which famous university was established in Kolkata in 1857?", "options": ["Jadavpur University", "University of Calcutta", "Presidency University", "Rabindra Bharati University"], "answer": "University of Calcutta" },
+    { "question": "What is the name of the oldest museum in India located in Kolkata?", "options": ["Victoria Memorial", "Indian Museum", "Birla Industrial & Technological Museum", "Marble Palace"], "answer": "Indian Museum" },
+    { "question": "Which movement had a significant impact on Kolkata in the late 1960s and 1970s?", "options": ["Quit India Movement", "Civil Disobedience Movement", "Naxalite Movement", "Salt March"], "answer": "Naxalite Movement" },
+    { "question": "Who was the first Indian to receive the Nobel Prize and is associated with Kolkata?", "options": ["Rabindranath Tagore", "Mother Teresa", "C.V. Raman", "Amartya Sen"], "answer": "Rabindranath Tagore" },
+    { "question": "Which major transportation system was inaugurated in Kolkata in 1984?", "options": ["Kolkata Metro", "Kolkata Tram", "Howrah Bridge", "Netaji Subhas Chandra Bose International Airport"], "answer": "Kolkata Metro" },
+    { "question": "Which festival is the most significant and widely celebrated in Kolkata?", "options": ["Durga Puja", "Diwali", "Holi", "Eid"], "answer": "Durga Puja" },
+    { "question": "What is the name of the landmark bridge that connects Kolkata and Howrah?", "options": ["Vidyasagar Setu", "Howrah Bridge", "Rabindra Setu", "Nivedita Setu"], "answer": "Howrah Bridge" }
+        ],
+        location: [
+        { "question": "Which iconic bridge connects Kolkata and Howrah?", "options": ["Vidyasagar Setu", "Howrah Bridge", "Rabindra Setu", "Nivedita Setu"], "answer": "Howrah Bridge" },
+    { "question": "Which famous memorial in Kolkata is dedicated to Queen Victoria?", "options": ["Victoria Memorial", "Marble Palace", "Indian Museum", "Nehru Children's Museum"], "answer": "Victoria Memorial" },
+    { "question": "Where is the headquarters of the Missionaries of Charity founded by Mother Teresa located?", "options": ["Kalighat", "Shyambazar", "Salt Lake", "Park Street"], "answer": "Kalighat" },
+    { "question": "What is the name of Kolkata's largest stadium?", "options": ["Eden Gardens", "Salt Lake Stadium", "Mohun Bagan Ground", "Rabindra Sarobar Stadium"], "answer": "Salt Lake Stadium" },
+    { "question": "Which famous market in Kolkata is known for its wide range of goods and colonial architecture?", "options": ["Gariahat Market", "New Market", "College Street Market", "Hatibagan Market"], "answer": "New Market" },
+    { "question": "Which iconic theater in Kolkata is known for its art deco architecture?", "options": ["Nandan", "Priya Cinema", "Metro Cinema", "Star Theatre"], "answer": "Metro Cinema" },
+    { "question": "Which popular park in Kolkata is known for its lush greenery and historical significance?", "options": ["Eden Gardens", "Rabindra Sarobar", "Maidan", "Deshapriya Park"], "answer": "Maidan" },
+    { "question": "Which famous temple in Kolkata is dedicated to Goddess Kali?", "options": ["Dakshineswar Temple", "Kalighat Temple", "Birla Mandir", "Thanthania Kalibari"], "answer": "Kalighat Temple" },
+    { "question": "Where is the National Library of India located in Kolkata?", "options": ["Alipore", "Park Street", "Tollygunge", "College Street"], "answer": "Alipore" },
+    { "question": "Which renowned college in Kolkata is associated with many notable alumni and is located on College Street?", "options": ["Presidency College", "Scottish Church College", "St. Xavier's College", "Lady Brabourne College"], "answer": "Presidency College" }
+        ],
+        culture: [
+        { "question": "Which festival is the most significant in Kolkata?", "options": ["Durga Puja", "Diwali", "Holi", "Eid"], "answer": "Durga Puja" },
+    { "question": "Who is the famous Bengali poet and Nobel laureate from Kolkata?", "options": ["Rabindranath Tagore", "Bankim Chandra Chattopadhyay", "Satyajit Ray", "Kazi Nazrul Islam"], "answer": "Rabindranath Tagore" },
+    { "question": "What is the primary language spoken in Kolkata?", "options": ["Hindi", "English", "Bengali", "Urdu"], "answer": "Bengali" },
+    { "question": "Which street in Kolkata is famous for its Christmas celebrations?", "options": ["Park Street", "College Street", "Gariahat Road", "Chowringhee Road"], "answer": "Park Street" },
+    { "question": "Which annual literary event is the largest book fair in Asia?", "options": ["Kolkata Literary Meet", "Kolkata Book Fair", "Jaipur Literature Festival", "Delhi Book Fair"], "answer": "Kolkata Book Fair" },
+    { "question": "Which traditional Bengali sweet is Kolkata famous for?", "options": ["Gulab Jamun", "Rasgulla", "Jalebi", "Barfi"], "answer": "Rasgulla" },
+    { "question": "Which classical dance form is commonly performed in Kolkata?", "options": ["Bharatanatyam", "Kathakali", "Kathak", "Odissi"], "answer": "Kathak" },
+    { "question": "Which renowned film director from Kolkata created the Apu Trilogy?", "options": ["Ritwik Ghatak", "Satyajit Ray", "Mrinal Sen", "Aparna Sen"], "answer": "Satyajit Ray" },
+    { "question": "What is the name of the famous cultural complex in Kolkata that hosts film festivals and cultural events?", "options": ["Nandan", "Rabindra Sadan", "Kala Mandir", "Science City"], "answer": "Nandan" },
+    { "question": "Which festival marks the Bengali New Year in Kolkata?", "options": ["Poila Boishakh", "Vasant Panchami", "Makar Sankranti", "Baisakhi"], "answer": "Poila Boishakh" }
+        ]
+    };
+
+    return questions[subject];
+}
+
+    </script>
+    
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <style>
+        body {
+    font-family: M;
+    background-color: #000000;
+    font-family: 'Montserrat';
+    background: url('images/bgroad.jpg')no-repeat ;
+}
+
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 80%;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%; /* Center the line */
+    top: 0;
+    bottom: 0;
+    width: 4px; /* Width of the vertical line */
+    background-color: #d1d1d1; /* Vertical line color */
+    transform: translateX(-50%); /* Adjust for centering */
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event {
+    position: relative;
+    padding: 10px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    opacity: 0; /* Initially hide the event */
+    transform: translateY(20px); /* Initial position for the event */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.event.show {
+    opacity: 1; /* Show the event */
+    transform: translateY(0); /* Move the event to its final position */
+}
+.bullet {
+    height: 20px;
+    width: 20px;
+    background-color: #f8bb2b;
+    border-radius: 50%;
+    position: absolute; /* Position absolute to align with the vertical line */
+    left: 50%; /* Center the bullet */
+    transform: translateX(-50%); /* Adjust for centering */
+}
+
+.event-info {
+    padding-top: 30px;
+    opacity: 0.8;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 500px; /* Fixed width for consistent layout */
+    height: 100px;
+    position: relative; /* Keep relative positioning */
+    top: -5px; /* Adjust this value to move the card closer to the bullet */
+    /* background-color: #e8e8e8ad; */
+}
+
+.event-info h2{
+    font-weight: 500;
+    font-size: 20pt;
+    color: #000000;
+
+}
+.event-info p{
+    font-size: 12pt;
+    font-weight: 400;
+    
+}
+
+.event.left {
+    justify-content: flex-start; /* Align left events to the left */
+}
+
+.event.left .event-info {
+    padding-right: 30px;
+    text-align: right;
+    margin-right: 30px; /* Margin for left events */
+    background: linear-gradient(to right, #5f3e29, #f0be81);
+}
+
+.event.right {
+    justify-content: flex-end; /* Align right events to the right */
+}
+
+.event.right .event-info {
+    padding-left: 30px;
+    text-align: left;
+    margin-left: 30px; /* Margin for left events */
+    background: linear-gradient(to right, #f0be81, #5f3e29);
+}
+
+.popup-modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: url(images/cardbg.jpg) no-repeat center center;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+}
+
+.popup-content p{
+    font-weight: 500;
+}
+
+.popup-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 60px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li class="dropdown">
+                    <a href="#section">What We Offer</a>
+                    <ul class="dropdown-content">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="gallery.html">Image Gallery</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="blog/blog.php">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <!-- Main Content -->
+    <div class="timeline">
+        <div class="event left" onclick="openPopup('Establishment of Kolkata (Calcutta)', 'Job Charnock, an agent of the British East India Company, established a trading post in Kolkata, marking the beginning of the city.', 'images/event1.jpg', 'Hooghly Riverbank')">
+            <div class="event-info">
+                <h2>Establishment of Kolkata (Calcutta)</h2>
+                <p style="font-weight: 400;">1690</p>
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Battle of Plassey', 'The British East India Company defeated Nawab Siraj-ud-Daulah, leading to British control over Bengal.', 'images/event2.jpg', 'Plassey, near Murshidabad')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Battle of Plassey</h2>
+                <p style="font-weight: 400;">1757</p>
+                
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Black Hole of Calcutta', 'The incident where British prisoners were held in a small dungeon overnight, leading to numerous deaths due to suffocation.', 'images/event3.jpg', 'Fort William, Kolkata')">
+            <div class="event-info">
+                <h2>Black Hole of Calcutta</h2>
+                <p style="font-weight: 400;">1756</p>
+               
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('First War of Indian Independence (Sepoy Mutiny)', 'Kolkata played a significant role in the rebellion against British rule.', 'images/event4.jpg', 'Various locations in Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>First War of Indian Independence</h2>
+                <p style="font-weight: 400;">1857</p>
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Establishment of the University of Calcutta', 'The University of Calcutta was founded, becoming one of the oldest universities in India.', 'images/event5.jpg', 'Senate House, College Street, Kolkata')">
+            <div class="event-info">
+                <h2>Calcutta University Inauguration</h2>
+                <p style="font-weight: 400;">1857</p>
+                
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Indian Museum Inauguration', 'The Indian Museum, the largest and oldest museum in India, was inaugurated.', 'images/event6.jpg', 'Chowringhee, Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Indian Museum Inauguration</h2>
+                <p style="font-weight: 400;">1875</p>
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Partition of Bengal', 'The British government divided Bengal into East and West, sparking widespread protests.', 'images/event7.jpg', 'Bengal Presidency (impact felt across Kolkata)')">
+            <div class="event-info">
+                <h2>Partition of Bengal</h2>
+                <p style="font-weight: 400;">1905</p>
+             
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Jallianwala Bagh Massacre Protests', 'Protests erupted in Kolkata against the massacre, marking a significant moment in the Indian independence movement.', 'images/event8.jpg', 'Various locations in Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Jallianwala Bagh Massacre Protests</h2>
+                <p style="font-weight: 400;">1919</p>
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Establishment of the All India Radio (AIR)', 'Kolkata became one of the first cities to have an All India Radio station.', 'images/event9.jpg', 'Akashvani Bhavan, Kolkata')">
+            <div class="event-info">
+                <h2>Establishment of the All India Radio</h2>
+                <p style="font-weight: 400;">1927</p>
+                
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Salt March Protests', 'Kolkata witnessed significant participation in the Civil Disobedience Movement, particularly the Salt March.', 'images/event10.jpg', 'Various locations in Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Salt March Protests</h2>
+                <p style="font-weight: 400;">1930</p>
+            </div>
+        </div>
+         <div class="event left" onclick="openPopup('Quit India Movement', 'Kolkata was a crucial center for the Quit India Movement, with widespread protests against British rule.', 'images/event11.jpg', 'Various locations in Kolkata')">
+            <div class="event-info">
+                <h2>Quit India Movement</h2>
+                <p style="font-weight: 400;">1942</p>
+          
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Great Calcutta Killings', 'Riots broke out between Hindus and Muslims, resulting in significant loss of life and property.', 'images/event12.jpg', 'Various locations in Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Great Calcutta Killings</h2>
+                <p style="font-weight: 400;">1946</p>
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Independence of India', 'India gained independence from British rule, and Kolkata became a part of the new nation.', 'images/event13.jpg', 'Across Kolkata')">
+            <div class="event-info">
+                <h2>Independence of India</h2>
+                <p style="font-weight: 400;">1947</p>
+          
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Refugee Crisis Post-Partition', 'Kolkata witnessed an influx of refugees from East Pakistan (now Bangladesh) following the partition.', 'images/event14.jpg', 'Various locations in Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Refugee Crisis Post-Partition</h2>
+                <p style="font-weight: 400;">1947-1950</p>
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Establishment of the Satyajit Ray Film Society', 'The Satyajit Ray Film Society was established, promoting film culture in Kolkata.', 'images/event15.jpg', 'Tollygunge, Kolkata')">
+            <div class="event-info">
+                <h2>Establishment of Film Society</h2>
+                <p style="font-weight: 400;">1956</p>
+          
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Naxalite Movement', 'The Naxalite movement, a radical communist movement, had a significant impact on Kolkata.', 'images/event16.jpg', 'Various locations in Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Naxalite Movement</h2>
+                <p style="font-weight: 400;">Late 1960s-1970s</p>
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Floods in Kolkata', 'Severe floods affected Kolkata, leading to widespread damage and displacement.', 'images/event17.jpg', 'Across Kolkata')">
+            <div class="event-info">
+                <h2>Floods in Kolkata</h2>
+                <p style="font-weight: 400;">1978</p>
+          
+            </div>
+            <div class="bullet"></div>
+        </div>
+        <div class="event right" onclick="openPopup('Mothers’ House (Missionaries of Charity)', 'Mother Teresa Missionaries of Charity was established in Kolkata, later earning her a Nobel Peace Prize.', 'images/event18.jpg', '54A, A.J.C. Bose Road, Kolkata')">
+            <div class="bullet"></div>
+            <div class="event-info">
+                <h2>Mothers’ House</h2>
+                <p style="font-weight: 400;">1950 (Nobel Prize 1979)</p>
+            </div>
+        </div>
+        <div class="event left" onclick="openPopup('Kolkata Metro Inauguration', 'The first metro railway in India was inaugurated in Kolkata, revolutionizing public transportation in the city.', 'images/event19.jpeg', 'Esplanade, Kolkata')">
+            <div class="event-info">
+                <h2>Kolkata Metro Inauguration</h2>
+                <p style="font-weight: 400;">1984</p>
+          
+            </div>
+            <div class="bullet"></div>
+        </div>
+
+        
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="popupModal" class="popup-modal">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2 id="popupTitle"></h2>
+            <img id="popupImage" src="" alt="Event Image">
+            <p id="popupDescription"></p>
+            <p id="popupLocation"></p>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-widget">
+            <h3>Pages</h3>
+            <ul class="page-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="archive.html">Archive</a></li>
+                <li><a href="gallery.html">Image Gallery</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="blog/blog.php">Blog</a></li>
+                <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </div>
+        <div class="footer-widget">
+            <h3>Contact Info</h3>
+            <p>123 Street Name,<br>City, Country</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123456789</p>
+        </div>
+        <div class="footer-widget">
+            <h3>Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14738.841782131081!2d88.3532697!3d22.552517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027705513adbb5%3A0x93aa9b8c01f6db31!2sPark%20Mansion!5e0!3m2!1sen!2sin!4v1722090760143!5m2!1sen!2sin" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </div>
+</footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+<!-- Scroll to Top Button -->
+<!-- Scroll to Top Button -->
+<button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">
+    &#8679;
+</button>
+<script>
+    // Get the button
+    let mybutton = document.getElementById("scrollToTopBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    function openPopup(title, description, image, location) {
+    document.getElementById('popupTitle').innerText = title;
+    document.getElementById('popupDescription').innerText = description;
+    document.getElementById('popupImage').src = image;
+    document.getElementById('popupLocation').innerText = location;
+    document.getElementById('popupModal').style.display = 'flex';
+}
+
+function closePopup() {
+    document.getElementById('popupModal').style.display = 'none';
+}
+document.addEventListener('DOMContentLoaded', function() {
+    const events = document.querySelectorAll('.event');
+    
+    function checkScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+        
+        events.forEach(event => {
+            const eventTop = event.getBoundingClientRect().top;
+            
+            if (eventTop < triggerBottom) {
+                event.classList.add('show');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Initial check in case events are already in view
+});
+
+    </script>
+    
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background: url('images/bancal.jpg') no-repeat center center;
+            background-size: cover;
+            height: 900px;
+            position: relative;
+        }
+        .floating-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.805);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+
+        .floating-card h1 {
+            margin: auto;
+            font-size: 2.5em;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .floating-card h1::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/bancal.jpg') no-repeat center center;
+            background-size: cover;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            z-index: -1;
+        }
+
+
+
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .card {
+            background-color: #ffe2cd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            width: 300px;
+            margin: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .popup-modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #efc98b;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .popup-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .popup-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .popup-description {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li class="dropdown">
+                    <a href="#section">What We Offer</a>
+                    <ul class="dropdown-content">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="gallery.html">Image Gallery</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="blog/blog.php">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <!-- Main Content -->
+    <section class="banner">
+        <div class="floating-card">
+            <h1 data-text="Kolkata's Rich Culture">Kolkata's Rich Culture</h1>
+            <hr>
+            <p>Where Culture Breathes</p>
+        </div>
+    </section>
+    <div class="container">
+        <div class="card" onclick="openPopup('Durga Puja', 'Durga Puja is an annual Hindu festival originating in the Indian subcontinent which reveres and pays homage to the Hindu goddess, Durga.', 'images/dp.jpg')">
+            <img src="images/dp.jpg" alt="Durga Puja">
+            <div class="card-content">
+                <h2 class="card-title">Durga Puja</h2>
+                <p class="card-description">Annual Hindu festival revering goddess Durga.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Poila Boishakh', 'Poila Boishakh is the first day of the Bengali calendar, celebrated as Bengali New Year.', 'images/pb.jpg')">
+            <img src="images/pb.jpg" alt="Poila Boishakh">
+            <div class="card-content">
+                <h2 class="card-title">Poila Boishakh</h2>
+                <p class="card-description">First day of the Bengali calendar.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Kali Puja', 'Kali Puja, also known as Shyama Puja, is a festival dedicated to the Hindu goddess Kali.', 'images/k.jpg')">
+            <img src="images/k.jpg" alt="Kali Puja">
+            <div class="card-content">
+                <h2 class="card-title">Kali Puja</h2>
+                <p class="card-description">Festival dedicated to goddess Kali.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Christmas Celebrations at Park Street', 'Park Street in Kolkata is beautifully decorated with lights and festive decorations. The area becomes a hub of Christmas celebrations with food stalls, music, and cultural programs.', 'images/ch.jpg')">
+            <img src="images/ch.jpg" alt="Kali Puja">
+            <div class="card-content">
+                <h2 class="card-title">Christmas Celebrations</h2>
+                <p class="card-description">Festive lights and celebrations.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Kolkata Book Fair', 'The largest book fair in Asia, attracting bibliophiles from all over the world. It features book launches, literary discussions, and cultural performances.', 'images/kb.jpg')">
+            <img src="images/kb.jpg" alt="Kali Puja">
+            <div class="card-content">
+                <h2 class="card-title">Kolkata Book Fair</h2>
+                <p class="card-description">Asia's biggest literary festival.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Kolkata International Film Festival (KIFF)', 'An annual film festival showcasing a diverse range of international and Indian films. It is one of the most prestigious film festivals in India.', 'images/kif.jpg')">
+            <img src="images/kif.jpg" alt="Kali Puja">
+            <div class="card-content">
+                <h2 class="card-title">Kolkata International Film Festival</h2>
+                <p class="card-description">Premier showcase of global cinema.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Saraswati Puja', 'Known as the festival of students, Saraswati Puja is dedicated to the goddess of learning and wisdom. It is celebrated with rituals, music, and cultural events.', 'images/sp.jpg')">
+            <img src="images/sp.jpg" alt="Kali Puja">
+            <div class="card-content">
+                <h2 class="card-title">Saraswati Puja</h2>
+                <p class="card-description">Festival honoring the goddess of learning.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Basanta Utsav (Holi)', 'A vibrant celebration of colors marking the arrival of spring. Basanta Utsav is celebrated with music, dance, and the playful application of colors.', 'images/d.jpg')">
+            <img src="images/d.jpg" alt="Kali Puja">
+            <div class="card-content">
+                <h2 class="card-title">Basanta Utsav (Holi)</h2>
+                <p class="card-description">Spring's colorful welcome.</p>
+            </div>
+        </div>
+        <div class="card" onclick="openPopup('Kolkata Carnival', 'A colorful parade featuring traditional music, dance, and floats, showcasing the cultural diversity of Kolkata.', 'images/kc.jpeg')">
+            <img src="images/kc.jpeg" alt="Kali Puja">
+            <div class="card-content">
+                <h2 class="card-title">Kolkata Carnival</h2>
+                <p class="card-description">Parade of cultural diversity.</p>
+            </div>
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
+
+    <div id="popupModal" class="popup-modal">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2 id="popupTitle" class="popup-title"></h2>
+            <img id="popupImage" src="" alt="Cultural Event Image">
+            <p id="popupDescription" class="popup-description"></p>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-widget">
+            <h3>Pages</h3>
+            <ul class="page-list">
+                <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="blog/blog.php">Blog</a></li>
+                    <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </div>
+        <div class="footer-widget">
+            <h3>Contact Info</h3>
+            <p>123 Street Name,<br>City, Country</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123456789</p>
+        </div>
+        <div class="footer-widget">
+            <h3>Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14738.841782131081!2d88.3532697!3d22.552517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027705513adbb5%3A0x93aa9b8c01f6db31!2sPark%20Mansion!5e0!3m2!1sen!2sin!4v1722090760143!5m2!1sen!2sin" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </div>
+</footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+<!-- Scroll to Top Button -->
+<!-- Scroll to Top Button -->
+<button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">
+    &#8679;
+</button>
+<script>
+    // Get the button
+    let mybutton = document.getElementById("scrollToTopBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <script>
+        function openPopup(title, description, imageSrc) {
+            document.getElementById('popupTitle').textContent = title;
+            document.getElementById('popupDescription').textContent = description;
+            document.getElementById('popupImage').src = imageSrc;
+            document.getElementById('popupModal').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popupModal').style.display = 'none';
+        }
+
+        // Close the popup when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('popupModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+    
+</html>

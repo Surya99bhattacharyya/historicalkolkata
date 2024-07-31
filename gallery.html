@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <style>
+        /* Main content styles */
+        main {
+            padding: 20px;
+            text-align: center;
+            background-color: black;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #c3c3c3;
+            font-weight: 400;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 250px; /* Thumbnail size */
+            height: 220px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.783); /* Shadow effect */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button-container {
+            max-width: 150px;
+            justify-content: center;
+            margin: 10px 0;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center items */
+        }
+
+        .download-btn img {
+            padding-right:100px;
+            width: 50px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-top: 10px; /* Space between image and button */
+        }
+
+
+        
+
+        /* Navigation buttons */
+        .nav-btn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 24px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        
+
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li class="dropdown">
+                    <a href="#section">What We Offer</a>
+                    <ul class="dropdown-content">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="gallery.html">Image Gallery</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="blog/blog.php">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="gal">
+            <h1>G A L L E R Y</h1>
+            <div class="gallery">
+                <img src="images/image1.jpg" alt="Image 1" onclick="openModal(0)">
+                <img src="images/image2.jpg" alt="Image 2" onclick="openModal(1)">
+                <img src="images/c.jpeg" alt="Image 3" onclick="openModal(2)">
+                <img src="images/c1.jpg" alt="Image 4" onclick="openModal(3)">
+                <img src="images/ch.jpg" alt="Image 5" onclick="openModal(4)">
+                <img src="images/1.jpg" alt="Image 6" onclick="openModal(5)">
+                <img src="images/2.jpg" alt="Image 6" onclick="openModal(6)">
+                <img src="images/3.jpg" alt="Image 6" onclick="openModal(7)">
+                <img src="images/4.jpg" alt="Image 6" onclick="openModal(8)">
+                <img src="images/5.jpg" alt="Image 6" onclick="openModal(9)">
+                <img src="images/6.jpg" alt="Image 6" onclick="openModal(10)">
+                <img src="images/7.webp" alt="Image 6" onclick="openModal(11)">
+                <img src="images/8.jpg" alt="Image 6" onclick="openModal(12)">
+                <img src="images/9.jpg" alt="Image 6" onclick="openModal(13)">
+                <img src="images/10.webp" alt="Image 6" onclick="openModal(14)">
+                <img src="images/11.jpeg" alt="Image 6" onclick="openModal(15)">
+                <img src="images/12.jpg" alt="Image 6" onclick="openModal(16)">
+                <img src="images/13.webp" alt="Image 6" onclick="openModal(17)">
+                <img src="images/14.jpg" alt="Image 6" onclick="openModal(18)">
+                <img src="images/15.jpg" alt="Image 6" onclick="openModal(19)">
+                <img src="images/16.jpg" alt="Image 6" onclick="openModal(20)">
+                <img src="images/17.webp" alt="Image 6" onclick="openModal(21)">
+                <img src="images/18.jpg" alt="Image 6" onclick="openModal(22)">
+                <img src="images/19.jpg" alt="Image 6" onclick="openModal(23)">
+                <img src="images/20.jpeg" alt="Image 6" onclick="openModal(24)">
+                <img src="images/21.jpg" alt="Image 6" onclick="openModal(25)">
+                <img src="images/22.jpg" alt="Image 6" onclick="openModal(26)">
+                <img src="images/23.jpg" alt="Image 6" onclick="openModal(27)">
+                <img src="images/24.jpg" alt="Image 6" onclick="openModal(28)">
+                <img src="images/25.jpg" alt="Image 6" onclick="openModal(29)">
+                <!-- Additional images can be added here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="button-container">
+            <a id="downloadBtn" class="download-btn" href="#" download style="display:none;"><img src="images/ddd.png"></a>
+        </div>
+        <button class="nav-btn prev" onclick="changeSlide(-1)">&#10094;</button> <!-- Previous button -->
+        <button class="nav-btn next" onclick="changeSlide(1)">&#10095;</button> <!-- Next button -->
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-widget">
+                <h3>Pages</h3>
+                <ul class="page-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="blog/blog.php">Blog</a></li>
+                    <li><a href="contact.html">Get in Touch</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h3>Contact Info</h3>
+                <p>123 Street Name,<br>City, Country</p>
+                <p>Email: info@example.com</p>
+                <p>Phone: +123456789</p>
+            </div>
+            <div class="footer-widget">
+                <h3>Location</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14738.841782131081!2d88.3532697!3d22.552517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027705513adbb5%3A0x93aa9b8c01f6db31!2sPark%20Mansion!5e0!3m2!1sen!2sin!4v1722090760143!5m2!1sen!2sin" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">&#8679;</button>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script>
+        const images = [
+            {src: 'images/image1.jpg', alt: 'Image 1'},
+            {src: 'images/image2.jpg', alt: 'Image 2'},
+            {src: 'images/c.jpeg', alt: 'Image 3'},
+            {src: 'images/c1.jpg', alt: 'Image 4'},
+            {src: 'images/ch.jpg', alt: 'Image 5'},
+            {src: 'images/1.jpg', alt: 'Image 6'},
+            {src: 'images/2.jpg', alt: 'Image 7'},
+            {src: 'images/3.jpg', alt: 'Image '},
+            {src: 'images/4.jpg', alt: 'Image 6'},
+            {src: 'images/5.jpg', alt: 'Image 6'},
+            {src: 'images/6.jpg', alt: 'Image 6'},
+            {src: 'images/7.webp', alt: 'Image 6'},
+            {src: 'images/8.jpg', alt: 'Image 6'},
+            {src: 'images/9.jpg', alt: 'Image 6'},
+            {src: 'images/10.webp', alt: 'Image 6'},
+            {src: 'images/11.jpeg', alt: 'Image 6'},
+            {src: 'images/12.jpg', alt: 'Image 6'},
+            {src: 'images/13.webp', alt: 'Image 6'},
+            {src: 'images/14.jpg', alt: 'Image 6'},
+            {src: 'images/15.jpg', alt: 'Image 6'},
+            {src: 'images/16.jpg', alt: 'Image 6'},
+            {src: 'images/17.webp', alt: 'Image 6'},
+            {src: 'images/18.jpg', alt: 'Image 6'},
+            {src: 'images/19.jpg', alt: 'Image 6'},
+            {src: 'images/20.jpeg', alt: 'Image 6'},
+            {src: 'images/21.jpg', alt: 'Image 6'},
+            {src: 'images/22.jpg', alt: 'Image 6'},
+            {src: 'images/23.jpg', alt: 'Image 6'},
+            {src: 'images/24.jpg', alt: 'Image 6'},
+            {src: 'images/25.jpg', alt: 'Image 6'},
+        ];
+        let currentIndex = -1;
+
+        function openModal(index) {
+            currentIndex = index; // Set the current index
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            var downloadBtn = document.getElementById("downloadBtn");
+
+            modal.style.display = "flex"; // Change to flex for centering
+            modalImg.src = images[currentIndex].src; // Set image source
+            downloadBtn.href = images[currentIndex].src; // Set download link
+            downloadBtn.style.display = "inline-block"; // Show download button
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none"; // Hide modal
+        }
+
+        function changeSlide(direction) {
+            currentIndex += direction; // Update the index based on direction
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1; // Loop to last image if at start
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0; // Loop to first image if at end
+            }
+            openModal(currentIndex); // Open modal with updated index
+        }
+
+        // Scroll to Top Functionality
+        let mybutton = document.getElementById("scrollToTopBtn");
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        };
+        
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

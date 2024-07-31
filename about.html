@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <style>
+        body {
+            background-color: #000000;
+        }
+
+        /* Banner Section */
+        .banner {
+            background: url('images/collage.png') no-repeat center center;
+            background-size: cover;
+            height: 800px;
+            position: relative;
+        }
+
+        .main {
+            padding: 20px;
+        }
+
+        .about-us {
+            padding: 50px 20px;
+            background: url(images/abg.jpg) no-repeat center center;
+            text-align: center;
+        }
+
+        .about-us h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: rgb(224, 226, 228);
+            font-weight: 400;
+            padding-right: 250px;
+        }
+
+        .about-us p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: rgb(179, 180, 180);
+            padding-right: 250px;
+        }
+
+        .about-section {
+            display: flex;
+            padding-left: 70px;
+            flex-wrap: wrap;
+            gap: 20px; /* Decrease gap between the cards */
+        }
+
+        .about-item {
+            background-color: rgba(236, 236, 236, 0.826);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 300px;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+
+        .about-item:hover {
+            transform: scale(1.05);
+            background: url(images/cardbg.jpg) no-repeat center center;
+        }
+
+        .about-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .about-item h2 {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: rgb(46, 46, 46);
+            font-weight: 300;
+        }
+
+        .about-item hr {
+            background-color: #040404;
+            height: 2px;
+        }
+
+        .about-item p {
+            padding: 0 20px 20px;
+            font-size: 1em;
+            color: #040404;
+            font-weight: 400;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li class="dropdown">
+                    <a href="#section">What We Offer</a>
+                    <ul class="dropdown-content">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="gallery.html">Image Gallery</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="blog/blog.php">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner">
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <section class="about-us">
+            <div class="container">
+                <h1>ABOUT US</h1>
+                <p>Learn more about our mission, vision, and values.</p>
+                
+
+                <div class="about-section">
+                    <div class="about-item">
+                        <img src="images/c.jpeg" alt="Mission">
+                        <h2>Our Mission</h2>
+                        
+                        <p>To preserve and promote the rich cultural and historical heritage of Kolkata, providing a platform for education, awareness, and engagement.</p>
+                    </div>
+
+                    <div class="about-item">
+                        <img src="images/c1.jpg" alt="Vision">
+                        <h2>Our Vision</h2>
+                        
+                        <p>To be the leading source of historical knowledge about Kolkata, inspiring pride and appreciation for the city's past and its influence on the present and future.</p>
+                    </div>
+
+                    <div class="about-item">
+                        <img src="images/c2.jpg" alt="Values">
+                        <h2>Our Values</h2>
+                        
+                        <p>Commitment to authenticity, inclusivity, and community engagement. We value the diverse stories and contributions of all Kolkata residents, past and present.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-widget">
+                <h3>Pages</h3>
+                <ul class="page-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="blog/blog.php">Blog</a></li>
+                    <li><a href="contact.html">Get in Touch</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h3>Contact Info</h3>
+                <p>123 Street Name,<br>City, Country</p>
+                <p>Email: info@example.com</p>
+                <p>Phone: +123456789</p>
+            </div>
+            <div class="footer-widget">
+                <h3>Location</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14738.841782131081!2d88.3532697!3d22.552517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027705513adbb5%3A0x93aa9b8c01f6db31!2sPark%20Mansion!5e0!3m2!1sen!2sin!4v1722090760143!5m2!1sen!2sin" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">
+        &#8679;
+    </button>
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("scrollToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>

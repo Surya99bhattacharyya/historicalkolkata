@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Link to CSS file -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #171717;
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner {
+            background: url('images/ban.jpg') no-repeat center center;
+            background-size: cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .countdown {
+            font-size: 3em;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .card-logo{
+            padding-left: 30px;
+        }
+
+        .calendar-section {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .calendar-small {
+            background-color: #d5d2d2;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .popup-modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: #e7cba1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 700px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .old-events {
+            margin: 20px;
+            
+        }
+
+        .old-events h2{
+            text-align: center;
+            font-weight: 400;
+            color: #dfdfdf;
+            font-size: 30pt;
+        }
+
+        .card-carousel {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .card {
+            background-color: #ffdeb9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(240, 240, 240, 0.645);
+            width: 300px;
+            margin: 20px;
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+
+        .card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #464545;
+        }
+
+        .event-details {
+            display: none;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .event-details.active {
+            display: block;
+        }
+
+        .event-date {
+            font-weight: bold;
+            color: red;
+            cursor: pointer;
+        }
+
+        #eventDropdown {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        #eventDropdown.active {
+            display: block;
+        }
+
+        .calendar-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .calendar-navigation button {
+            background-color: #ebebeb5e;
+            color: #515050;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+
+        .calendar-navigation button:hover {
+            background-color: #8e8e8e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Logo" /></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Our Story</a></li>
+                <li class="dropdown">
+                    <a href="#section">What We Offer</a>
+                    <ul class="dropdown-content">
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="culture.html">Culture</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="archive.html">Archive</a></li>
+                        <li><a href="gallery.html">Image Gallery</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                        <li><a href="blog/blog.php">Blog</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+
+    <!-- Main Content -->
+    <!-- Banner with Countdown -->
+    <div class="banner">
+        <div class="countdown" id="countdown"></div>
+    </div>
+
+    <!-- Calendar Section -->
+    <div class="calendar-section">
+        <div class="calendar-small" onclick="openCalendarPopup()">
+            <img src="images/cal copy.png" alt="Service 2" class="card-logo">
+            <p>Today's Date: <span id="todaysDate"></span></p>
+        </div>
+    </div>
+
+    <!-- Old Events Section -->
+    <div class="old-events">
+        <h2>Glimpses of Old Events</h2>
+        <hr>
+        <div class="card-carousel">
+            <div class="card">
+                <img src="images/web.jpg" alt="Workshop">
+                <div class="card-content">
+                    <h3 class="card-title">Workshop</h3>
+                    <p class="card-description">Interactive workshop session.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/bdon.jpg" alt="Blood Donation">
+                <div class="card-content">
+                    <h3 class="card-title">Blood Donation</h3>
+                    <p class="card-description">Blood donation drive event.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/fd.jpg" alt="Museum Visit">
+                <div class="card-content">
+                    <h3 class="card-title">Food Distribution</h3>
+                    <p class="card-description">Distribution of food to the needed.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="images/bd.jpg" alt="Book Distribution">
+                <div class="card-content">
+                    <h3 class="card-title">Book Distribution</h3>
+                    <p class="card-description">Distribution of books to students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendar Popup Modal -->
+    <div id="calendarPopup" class="popup-modal">
+        <div class="popup-content">
+            <span class="close" onclick="closeCalendarPopup()">&times;</span>
+            <h2>Event Calendar</h2>
+            <div class="calendar-navigation">
+                <button onclick="prevMonth()">&#8592;</button>
+                <h3 id="calendarMonthYear"></h3>
+                <button onclick="nextMonth()">&#8594;</button>
+            </div>
+            <div id="calendar"></div>
+            <div id="eventDropdown">
+                <h3 id="eventTitle"></h3>
+                <p id="eventDescription"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-widget">
+            <h3>Pages</h3>
+            <ul class="page-list">
+                <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="archive.html">Archive</a></li>
+                    <li><a href="gallery.html">Image Gallery</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="blog/blog.php">Blog</a></li>
+                    <li><a href="contact.html">Get in Touch</a></li>
+            </ul>
+        </div>
+        <div class="footer-widget">
+            <h3>Contact Info</h3>
+            <p>123 Street Name,<br>City, Country</p>
+            <p>Email: info@example.com</p>
+            <p>Phone: +123456789</p>
+        </div>
+        <div class="footer-widget">
+            <h3>Location</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14738.841782131081!2d88.3532697!3d22.552517!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027705513adbb5%3A0x93aa9b8c01f6db31!2sPark%20Mansion!5e0!3m2!1sen!2sin!4v1722090760143!5m2!1sen!2sin" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </div>
+</footer>
+
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+<!-- Scroll to Top Button -->
+<!-- Scroll to Top Button -->
+<button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">
+    &#8679;
+</button>
+<script>
+    // Get the button
+    let mybutton = document.getElementById("scrollToTopBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    </script>
+    <script>
+        // Countdown Timer
+        const countdownElement = document.getElementById('countdown');
+        const eventDate = new Date('2024-08-10T00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                countdownElement.textContent = "Event Started";
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+
+        // Display Today's Date
+        const todaysDateElement = document.getElementById('todaysDate');
+        const today = new Date();
+        todaysDateElement.textContent = today.toDateString();
+
+        // Calendar Popup
+        function openCalendarPopup() {
+            document.getElementById('calendarPopup').style.display = 'flex';
+        }
+
+        function closeCalendarPopup() {
+            document.getElementById('calendarPopup').style.display = 'none';
+            document.getElementById('eventDropdown').classList.remove('active');
+        }
+
+        // Initialize Calendar
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        const events = [
+            { date: '2024-07-30', title: 'Workshop', description: 'Interactive workshop session.' },
+            { date: '2024-08-15', title: 'Blood Donation', description: 'Blood donation drive event.' },
+            { date: '2024-09-05', title: 'Museum Visit', description: 'Visit to a local museum.' },
+            { date: '2024-09-21', title: 'Book Distribution', description: 'Distribution of books to students.' }
+        ];
+
+        function renderCalendar(month, year) {
+            const calendar = document.getElementById('calendar');
+            calendar.innerHTML = '';
+
+            const firstDayOfMonth = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let calendarHTML = '<table>';
+            calendarHTML += '<tr>';
+            calendarHTML += '<th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>';
+            calendarHTML += '</tr><tr>';
+
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                calendarHTML += '<td></td>';
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const currentDate = new Date(year, month, day);
+                const dateString = currentDate.toISOString().split('T')[0];
+
+                const event = events.find(e => e.date === dateString);
+                if (event) {
+                    calendarHTML += `<td class="event-date" onclick="showEventDetails('${event.title}', '${event.description}')">${day}</td>`;
+                } else {
+                    calendarHTML += `<td>${day}</td>`;
+                }
+
+                if ((day + firstDayOfMonth) % 7 === 0) {
+                    calendarHTML += '</tr><tr>';
+                }
+            }
+
+            calendarHTML += '</tr></table>';
+            calendar.innerHTML = calendarHTML;
+            document.getElementById('calendarMonthYear').textContent = new Date(year, month).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        }
+
+        function prevMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        // Show Event Details
+        function showEventDetails(title, description) {
+            const eventDropdown = document.getElementById('eventDropdown');
+            document.getElementById('eventTitle').textContent = title;
+            document.getElementById('eventDescription').textContent = description;
+            eventDropdown.classList.add('active');
+        }
+    </script>
+</html>
